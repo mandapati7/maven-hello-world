@@ -23,4 +23,45 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<!-- This plugin deletes the target files when user runs the mvn package 
+				command -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>auto-clean</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!--  This plugin creates an executable jar  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>				
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>HelloWorld</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<!-- Site Plugin, builds the site like Javadoc for MAVEN project and provides the details of Plugins, artifacts etc... !-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
